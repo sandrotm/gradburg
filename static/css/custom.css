@@ -207,18 +207,18 @@ a.t-c-pastelbrown:hover{
 	border-top: 5px solid white;
 }
 
-ul{
+ul.homelist{
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
 
-li { 
+li.homelist{
     padding-left: 1em; 
     text-indent: -.7em;
 }
 
-li:before {
+ul.homelist li:before {
 	content: "• ";
 	font-size: 24px;
 	color: #8F3D15;

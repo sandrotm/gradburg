@@ -1,29 +1,32 @@
 {% extends "core/base.html" %}
 
 {% block mainSection %}
-<div class='full-width bg-c-white' style="margin-bottom: 30px">
-	<div class='row' style='padding-top: 20px;'>
-		<h2 class='' style='color: #8f3d15'>ბინები</h2>
+<div class='full-width bg-c-white' style="padding-top: 20px; padding-bottom: 40px">
+    <!--<div class="row">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
+    </div>-->
+	<div class='row'>
+		<h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
 		<div class='columns small-15'>
             <ul class="tabs" data-tab>
-              <li class="tab-title active"><a href="#panel1">Tab 1</a></li>
-              <li class="tab-title"><a href="#panel2">Tab 2</a></li>
-              <li class="tab-title"><a href="#panel3">Tab 3</a></li>
-              <li class="tab-title"><a href="#panel4">Tab 4</a></li>
+                <li class="tab-title active"><a href="#panel1">მცირე ბინა</a></li>
+                <li class="tab-title"><a href="#panel2">საშუალო ბინა</a></li>
+                <li class="tab-title"><a href="#panel3">დიდი ბინა</a></li>
             </ul>
-            <div class="tabs-content">
-              <div class="content active" id="panel1">
-                <p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
-              </div>
-              <div class="content" id="panel2">
-                <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
-              </div>
-              <div class="content" id="panel3">
-                <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
-              </div>
-              <div class="content" id="panel4">
-                <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
-              </div>
+            <div class="tabs-content row">
+                {% for flat_type in flat_types %}
+                    <div class="content {% if forloop.first %}active{% endif %}"
+                         id="panel{{ forloop.counter }}">
+                        <div style="white-space: pre-wrap;"
+                            class="columns small-12">{{ flat_type.descr }}</div>
+                        <div class="columns small-12">
+                            {% for image in flat_type.images.all %}
+                                <img src="/media/{{ image.image }}" class=""
+                                    style="max-height: 350px; margin-bottom: 20px" />
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
             </div>
 		</div>
 		<div class='columns small-9' style="">
@@ -99,14 +102,52 @@
 		</div>			
 	</div>
 </div>
-<div class='full-width bg-c-pastelcream'>
+
+<div class='full-width bg-c-pastelcream' style='padding-top: 20px; padding-bottom: 40px'>
+    <div class="row" style="margin-bottom: 40px">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>პროექტი</h2>
+        <div class='columns small-16'>
+            რაღაც ტექსტი პროექტის შესახებ, რომელიც შედარებით ვრცელ ინფორმაციას მოიცავს<br />
+            გამოყენებული მასალები, აგური, ბეტონი, ფანჯარა, მეტალოპლასტიკი და ა.შ.<br />
+            მთავარი უპირატესობების შესახებ ვუყვებით ადამიანებს დეტალურად და სიამოვნებით<br />
+            დაწყების და დასრულების თარიღები, ამა და ამ წლის ამა და ამ თვის ამა და ამ რიცხვებს შორის<br />
+            და ბევრი<br />
+            სხვა<br />
+            საინტერესო<br />
+            ინფორმაცია!!!
+		</div>
+        <div class='columns small-8'>
+            <img src="/media/images/fasadi sqematuri.png" style="max-height: 350px;" />
+		</div>
+    </div>
+	<div class='row'>
+		<div class='columns small-8'>
+            <img src="/media/images/building 1.png" style="max-height: 350px;" />
+		</div>
+        <div class='columns small-8'>
+            <img src="/media/images/building 2.png" style="max-height: 350px;" />
+        </div>
+        <div class='columns small-8'>
+            <img src="/media/images/building 3.png" style="max-height: 350px;" />
+        </div>
+    </div>
+</div>
+
+<div class='full-width bg-c-white' style='padding-top: 20px; padding-bottom: 40px'>
+    <div class="row">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>პროცესი</h2>
+    </div>
 	<div class='row' style='padding-top: 30px'>
 		<div class='columns small-24' style='height: 200px'>
 		</div>
 	</div>
 </div>
-<div class='full-width bg-c-pastelcream'>
-	<div class='row' style='padding-top: 30px'>
+
+<div class='full-width bg-c-pastelcream' style='padding-top: 20px; padding-bottom: 40px'>
+    <div class="row">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>მდებარეობა</h2>
+    </div>
+    <div class='row' style='padding-top: 30px'>
 		<div class='columns small-24' style='height: 200px'>
 		
 		</div>
