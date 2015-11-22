@@ -203,6 +203,10 @@ a.t-c-pastelbrown:hover{
 	border-top: 5px solid white;
 }
 
+.menuitem-active{
+	border-top: 5px solid white;
+}
+
 ul{
 	list-style: none;
 	padding: 0;
