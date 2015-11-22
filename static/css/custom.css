@@ -1,0 +1,222 @@
+/*
+FIRST TIER: 293, 288, 79
+SECOND TIER: 386, 403, 217
+THIRD TIER: 383, 391
+293: 
+wood - #8F3D15
+green - #70822E
+warmGrayDark - #94715B
+warmGray - #C29B72
+warmGrayLight - #DAC0AF
+288:
+dark-brown - #8C3313
+light-brown - #B6571D
+dark-cream - #E18339
+light-cream - #E6A644
+khaki - #85622A
+79:
+teal - #5C755E
+pastelcream - #F7DCB4
+pastelbrown - #A97D5D
+lightteal #9C9F84
+*/
+
+.bg-c-darkgray{
+	background-color: #444444;
+}
+
+
+.bg-c-black{
+	background-color: #000000;
+}
+
+.bg-c-white{
+	background-color: #FFFFFF;
+}
+
+.bg-c-wood{
+	background-color: #8F3D15;
+}
+
+.bg-c-green{
+	background-color: #7F9822; /* #7F9822; /*#7A9224; /*#536A33; /*#70822E;*/
+}
+
+.bg-c-warmgraydark{
+	background-color: #94715B;
+}
+
+.bg-c-warmgray{
+	background-color: #C29B72;
+}
+
+.bg-c-warmgraylight{
+	background-color: #DAC0AF;
+}
+
+/* */
+
+.bg-c-darkbrown{
+	background-color: #8C3313;
+}
+
+.bg-c-lightbrown{
+	background-color: #B6571D; /* #7F9822; /*#7A9224; /*#536A33; /*#70822E;*/
+}
+
+.bg-c-darkcream{
+	background-color: #E18339;
+}
+
+.bg-c-lightcream{
+	background-color: #E6A644;
+}
+
+.bg-c-khaki{
+	background-color: #5E492A; /*#8F7C55; /*#85622A;*/
+}
+
+
+
+/* */
+
+.bg-c-teal{
+	background-color: #5C755E;
+}
+
+.bg-c-pastelcream{
+	background-color: #F7DCB4; /* #7F9822; /*#7A9224; /*#536A33; /*#70822E;*/
+}
+
+.bg-c-pastelbrown{
+	background-color: #A97D5D;
+}
+
+.bg-c-lightteal{
+	background-color: #9C9F84;
+}
+
+
+.tbg{
+    background-size:     cover;      
+    background-repeat:   no-repeat;
+    background-position: center 200;   	
+}
+
+@font-face {
+    font-family: mrgvalCaps;
+    src: url(../fonts/bpg_mrgvlovani_caps_2010.ttf);
+    /*src: url(../fonts/bpg_le_studio_02_caps.ttf);*/
+    letter-spacing: 1px;
+}
+
+@font-face {
+    font-family: engCaps;
+    src: url(../fonts/Bauhaus_.ttf);
+    letter-spacing: 1px;
+}
+
+.caption{
+	font-family: mrgvalCaps;
+}
+
+.eng-caption{
+	font-family: Bauhaus;
+}
+
+.t-c-white{
+	color: white !important;
+}
+
+a.t-c-white{
+	border-bottom: 1px dotted white !important;
+}
+
+a.t-c-white:hover{
+	color: white;
+	border-bottom: 1px solid white !important;
+}
+
+.t-c-white0{
+	color: white !important;
+}
+
+a.t-c-white0{
+	border-bottom: 0px dotted white !important;
+}
+
+a.t-c-white0:hover{
+	color: white;
+	border-bottom: 0px solid white !important;
+}
+
+.t-c-wood{
+	color: #8F3D15 !important;
+}
+
+a.t-c-wood{
+	border-bottom: 1px dotted #8F3D15 !important;
+}
+
+a.t-c-wood:hover{
+	color: white;
+	border-bottom: 1px solid #8F3D15 !important;
+}
+
+.t-c-darkbrown{
+	color: #8C3313 !important;
+}
+
+a.t-c-darkbrown{
+	border-bottom: 1px dotted #8C3313 !important;
+}
+
+a.t-c-darkbrown:hover{
+	color: white;
+	border-bottom: 1px solid #8C3313 !important;
+}
+
+.t-c-pastelbrown{
+	color: #A97D5D !important;
+}
+
+a.t-c-pastelbrown{
+	border-bottom: 1px dotted #A97D5D !important;
+}
+
+a.t-c-pastelbrown:hover{
+	color: white;
+	border-bottom: 1px solid #A97D5D !important;
+}
+
+.menuitem{
+	color: white;
+	font-family: mrgvalCaps;
+	font-size: 24px;
+	display: inline-block;
+	margin-left: 40px;
+	border-top: 5px solid transparent;
+	cursor: pointer;
+}
+
+.menuitem:hover{
+	border-top: 5px solid white;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li { 
+    padding-left: 1em; 
+    text-indent: -.7em;
+}
+
+li:before {
+	content: "• ";
+	font-size: 24px;
+	color: #8F3D15;
+}
+

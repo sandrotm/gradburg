@@ -1,0 +1,63 @@
+<!doctype html>
+{% load staticfiles %}
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	
+	<title>{% block title %}Gradburg{% endblock %}</title>
+	<meta name="description" content="NPC">
+	<meta name="author" content="NPC">
+	<!--this meta is needed to render adequately on mobiles, 
+		taking into account physical screen sizes, 
+		rather than just pixels-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">	
+
+	<link rel="stylesheet" type="text/css" href="{% static 'app.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
+	<!--<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick/slick.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick/slick-theme-my.css' %}"/>-->
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+	<!--<script src="{% static 'js/modernizr.js' %}"></script>
+	bg-c-warmgraydark bg-c-darkbrown -->
+</head>
+
+<body>
+	<div class='full-width  bg-c-green  '>
+		<div class='row'>
+			<div class='columns small-8' style='height: 90px'>
+				<h1 class='eng-caption t-c-white'>
+					<a href="{% url 'core:home' %}" class="t-c-white0 b-w-0">
+                        <span style='font-size:70px'>G</span>RADBURG
+                    </a>
+				</h1>
+			</div>
+			<div class='columns small-16' style='padding-top: 35px'>
+				<div class='menuitem right'>
+					<a href="{% url 'core:aboutUs' %}" class="t-c-white0 b-w-0">ჩვენს შესახებ</a>
+				</div>
+				<div class='menuitem right'>
+					<a href="{% url 'core:contact' %}" class="t-c-white0">კონტაქტი</a>
+				</div>
+				<div class='menuitem right'>
+					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">GRADBURG-ნაძალადევი</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% block mainSection %}
+	{% endblock %}
+	<div class='full-width bg-c-pastelbrown'>
+		<div class='row' style='padding-top: 20px'>
+			<div class='columns small-12 t-c-white' style='height: 40px'>
+				&copy; Gradburg LTD, თბილისი, 2015 
+			</div>
+		</div>
+	</div>
+
+</body>
+{% comment %}{% include 'autocomplete_light/static.html' %}{% endcomment %}
