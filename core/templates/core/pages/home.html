@@ -1,11 +1,10 @@
 {% extends "core/base.html" %}
 
 {% block mainSection %}
-<div class='full-width tbg' id='bannerhead1'>
-	<div class='row'>
-		<div class='columns small-24' style='height: 400px'>
-		</div>
-	</div>
+<div class='full-width tbg' id='bannerhead1' style='height: 400px'>
+
+	<div class="bg1"></div>
+	<div class="bg2"></div>
 </div>
 <div class='full-width bg-c-white' style="">
 	<div class='row' style='padding-top: 20px; height: 600px'>
@@ -50,7 +49,8 @@
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    var header1 = $('#bannerhead1')
+    var bg1 = $('#bannerhead1 .bg1'),
+    	bg2 = $('#bannerhead1 .bg2');
 
     var backgrounds = new Array(
         'url(../../media/images/banners/1.jpg)',
@@ -60,17 +60,19 @@ $(document).ready(function() {
         'url(../../media/images/banners/6.jpg)'
     )
 
-    var current = 0;
+    var current = 0, next = 0;
 
     function nextBackground() {
-        current++
-        current = current % backgrounds.length
-		header1.css('background-image', backgrounds[current]).fadeIn(500)
-    }
-
-    setInterval(nextBackground, 3500)
-
-    header1.css('background-image', backgrounds[0])
+    	current = next;
+        next++;
+        next = next % backgrounds.length;
+        bg1.css('background-image', backgrounds[current]);
+        bg2.css('background-image', backgrounds[next]).fadeTo(0, 0);        
+		bg2.fadeTo(500, 1);
+    }    
+    
+	nextBackground();
+    setInterval(nextBackground, 3500);
 });
 </script>
 

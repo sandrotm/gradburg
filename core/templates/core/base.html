@@ -50,6 +50,12 @@
 			</div>
 		</div>
 	</div>
+	<script>
+		var url = window.location.href;
+		$('.menuitem').filter(function() {
+    		return $(this).find('a')[0].href == url;
+		}).addClass('menuitem-active');
+	</script>
 	{% block mainSection %}
 	{% endblock %}
 	<div class='full-width bg-c-pastelbrown'>
