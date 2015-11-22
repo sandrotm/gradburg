@@ -220,3 +220,22 @@ li:before {
 	color: #8F3D15;
 }
 
+#bannerhead1 {
+	position: relative;
+}
+
+#bannerhead1 .bg1, #bannerhead1 .bg2 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+} 
+
+#bannerhead1 .bg1 {
+	z-index: 1;
+}
+
+#bannerhead1 .bg2 {
+	z-index: 2;
+}
