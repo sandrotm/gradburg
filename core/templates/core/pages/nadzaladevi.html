@@ -1,21 +1,100 @@
 {% extends "core/base.html" %}
 
 {% block mainSection %}
-<div class='full-width bg-c-white' style="">
-	<div class='row' style='padding-top: 20px; height: 600px'>
-		<div class='columns small-16'>
-			<h2 class='' style='color: #8f3d15'>ჩვენი ხედვა</h2>
-			<ul>
-				<li>ჩვენ ვაშენებთ ხარისხიანად</li>
-				<li>ჩვენი ფასი ყოველთვის საბაზროა</li>
-				<li>ჩვენ გვიყვარს ჩვენი კლიენტები</li>
-				<li>ჩვენი წარმატება ჩვენი საიდუმლოა</li>
-			</ul>
+<div class='full-width bg-c-white' style="margin-bottom: 30px">
+	<div class='row' style='padding-top: 20px;'>
+		<h2 class='' style='color: #8f3d15'>ბინები</h2>
+		<div class='columns small-15'>
+            <ul class="tabs" data-tab>
+              <li class="tab-title active"><a href="#panel1">Tab 1</a></li>
+              <li class="tab-title"><a href="#panel2">Tab 2</a></li>
+              <li class="tab-title"><a href="#panel3">Tab 3</a></li>
+              <li class="tab-title"><a href="#panel4">Tab 4</a></li>
+            </ul>
+            <div class="tabs-content">
+              <div class="content active" id="panel1">
+                <p>This is the first panel of the basic tab example. You can place all sorts of content here including a grid.</p>
+              </div>
+              <div class="content" id="panel2">
+                <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+              </div>
+              <div class="content" id="panel3">
+                <p>This is the third panel of the basic tab example. This is the third panel of the basic tab example.</p>
+              </div>
+              <div class="content" id="panel4">
+                <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+              </div>
+            </div>
 		</div>
-		<div class='columns small-8'>
-			<!--<h2 class='caption t-c-wood'>კონტაქტი</h2>t-c-wood t-c-darkbrown
-			bg-c-warmgraylight bg-c-warmgraylight -->
-			<div style='border-radius: 4px; background-color: #94715B;'>
+		<div class='columns small-9' style="">
+			<h2 class='' style='color: #8f3d15'></h2>
+			<div style='border-radius: 4px; background-color: #94715B;' style="font-size: 13px"
+                class="t-c-darkbrown">
+                <div class="columns small-3" style="text-align: center; font-size: 13px; height: 30px">
+                    სართ.
+                </div>
+                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
+                    მცირე
+                </div>
+                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
+                    საშუალო
+                </div>
+                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
+                    დიდი
+                </div>
+                <div class="columns small-3" style="font-size: 13px">
+                    {% for floor in floors %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 20px; padding: 10px 2px 2px">
+                            {{ floor }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="columns small-7" style="font-size: 12px">
+                    {% for flat in flat_group1 %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
+                        {% if flat.get_status_display == 'თავისუფალია' %}
+                            color: #8C3313; border-color: #CC7353 !important;
+                        {% else %}
+                            color: #666;
+                        {% endif %}
+                        ">
+                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
+                            {{ flat.get_status_display }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="columns small-7" style="font-size: 12px">
+                    {% for flat in flat_group2 %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
+                        {% if flat.get_status_display == 'თავისუფალია' %}
+                            color: #8C3313; border-color: #CC7353 !important;
+                        {% else %}
+                            color: #666;
+                        {% endif %}
+                        ">
+                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
+                            {{ flat.get_status_display }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="columns small-7" style="font-size: 12px">
+                    {% for flat in flat_group3 %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
+                        {% if flat.get_status_display == 'თავისუფალია' %}
+                            color: #8C3313; border-color: #CC7353 !important;
+                        {% else %}
+                            color: #666;
+                        {% endif %}
+                        ">
+                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
+                            {{ flat.get_status_display }}
+                        </div>
+                    {% endfor %}
+                </div>
 			</div>
 		</div>			
 	</div>
@@ -23,7 +102,6 @@
 <div class='full-width bg-c-pastelcream'>
 	<div class='row' style='padding-top: 30px'>
 		<div class='columns small-24' style='height: 200px'>
-		
 		</div>
 	</div>
 </div>
@@ -34,6 +112,4 @@
 		</div>
 	</div>
 </div>
-
-
 {% endblock %}

@@ -9,8 +9,8 @@ image_type_choices = (
 
 flat_commercial_status_choices = (
     ('sold', 'გაყიდულია'),
-    ('available', 'ხელმისაწვდომია'),
-    ('reserved', 'დარეზერვებულია'),
+    ('available', 'თავისუფალია'),
+    ('reserved', 'რეზერვ.'),
 )
 
 floor_choices = [(i, i) for i in range(10)]
@@ -29,9 +29,10 @@ class Flat(models.Model):
     # body = models.TextField()
 
     floor = models.IntegerField(choices=floor_choices)
-    price = models.IntegerField()
-    area = models.IntegerField()
-    status = models.CharField(max_length=60, choices=flat_commercial_status_choices)
+    price = models.IntegerField(blank=True, null=True)
+    area = models.DecimalField(decimal_places=2, max_digits=5, blank=True, null=True)
+    status = models.CharField(max_length=60, choices=flat_commercial_status_choices, default='available')
+    type = models.ForeignKey('FlatType', default=1)
     
     def presented(self):
         return str(self.floor) + ' სართული; ' + str(self.area) + 'კვ.მ.'    
@@ -43,7 +44,7 @@ class Flat(models.Model):
 class Image(models.Model):
     title = models.CharField(max_length=190)
     image = models.ImageField(upload_to='images')
-    type = models.CharField(max_length=95, choices=image_type_choices, default='1')
+    type = models.CharField(max_length=95, choices=image_type_choices, default='photo')
 
     def __str__(self):
         return self.title
@@ -54,3 +55,5 @@ class FlatType(models.Model):
     descr = models.TextField()
     images = models.ManyToManyField('Image', blank=True)
 
+    def __str__(self):
+        return self.title
