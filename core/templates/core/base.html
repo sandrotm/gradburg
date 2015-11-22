@@ -23,6 +23,7 @@
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+	<script src="{% static 'js/foundation.js' %}"></script>
 	<!--<script src="{% static 'js/modernizr.js' %}"></script>
 	bg-c-warmgraydark bg-c-darkbrown -->
 </head>
@@ -66,5 +67,8 @@
 		</div>
 	</div>
 
+	<script>
+		$(document).foundation();
+	</script>
 </body>
 {% comment %}{% include 'autocomplete_light/static.html' %}{% endcomment %}
