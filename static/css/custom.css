@@ -245,3 +245,7 @@ li:before {
 	height: 400px;
 	background-color: #CCC;
 }
+
+.contact-field-name {
+	width: 50%;	
+}
