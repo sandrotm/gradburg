@@ -17,6 +17,7 @@ def nadzaladevi(request):
 
 def aboutUs(request):
     context = {}
+    context['images'] = Image.objects.all()
     return render(request, 'core/pages/aboutUs.html', context)
 
 def contact(request):

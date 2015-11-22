@@ -2,8 +2,8 @@
 
 {% block mainSection %}
 <div class='full-width bg-c-white' style="">
-	<div class='row' style='padding-top: 20px; height: 600px'>
-		<div class='columns small-16'>
+	<div class='row' style='padding-top: 20px; height: 300px'>
+		<div class='columns small-18'>
 			<h2 class='' style='color: #8f3d15'>ჩვენი ხედვა</h2>
 			<ul>
 				<li>ჩვენ ვაშენებთ ხარისხიანად</li>
@@ -12,7 +12,8 @@
 				<li>ჩვენი წარმატება ჩვენი საიდუმლოა</li>
 			</ul>
 		</div>
-		<div class='columns small-8'>
+
+			</div>
 			<!--<h2 class='caption t-c-wood'>კონტაქტი</h2>t-c-wood t-c-darkbrown
 			bg-c-warmgraylight bg-c-warmgraylight -->
 			<div style='border-radius: 4px; background-color: #94715B;'>
@@ -22,18 +23,43 @@
 </div>
 <div class='full-width bg-c-pastelcream'>
 	<div class='row' style='padding-top: 30px'>
-		<div class='columns small-24' style='height: 200px'>
-		
+		<div class='columns small-24' >
+			<div class='columns small-8'>
+				<img id="bigimage" src="">
+			</div>
+			<div class='columns small-16'>
+				<div id="gallery">
+				
+				
+				{% for image in images %}
+				    <a href="/media/{{ image.image }}" title="Orange"><img src="/media/{{ image.image }}" alt="Orange"></a>
+	
+				{% endfor %}
 		</div>
 	</div>
 </div>
 <div class='full-width bg-c-pastelcream'>
 	<div class='row' style='padding-top: 30px'>
 		<div class='columns small-24' style='height: 200px'>
+
 		
 		</div>
 	</div>
 </div>
 
+
+<script>
+$('#bigimage').attr('src', $('#gallery a').first()[0].href);
+document.getElementById('gallery').onclick = function (event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement,
+        link = target.src ? target.parentNode : target,
+        options = {index: link, event: event},
+        links = this.getElementsByTagName('a');
+        
+    $('#bigimage').attr('src', link);
+    event.preventDefault();
+};
+</script>
 
 {% endblock %}
