@@ -1,0 +1,109 @@
+{% extends "core/base.html" %}
+
+{% block mainSection %}
+
+<div class='full-width bg-c-white' style="padding-top: 20px; padding-bottom: 40px">
+    <!--<div class="row">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
+    </div>-->
+	<div class='row'>
+		<h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
+		<div class='columns small-15'>
+            <ul class="tabs" data-tab>
+                <li class="tab-title active"><a href="#panel1">48მ2 ბინა</a></li>
+                <li class="tab-title"><a href="#panel2">73მ2 ბინა</a></li>
+                <li class="tab-title"><a href="#panel3">110.5მ2 ბინა</a></li>
+            </ul>
+            <div class="tabs-content row">
+                {% for flat_type in flat_types %}
+                    <div class="content {% if forloop.first %}active{% endif %}"
+                         id="panel{{ forloop.counter }}">
+                        <div style="white-space: pre-wrap;"
+                            class="columns small-12">{{ flat_type.descr }}</div>
+                        <div class="columns small-12 imgholder">
+                            {% for image in flat_type.images.all %}
+                                <a href="/media/{{ image.image }}">
+                                    <img src="/media/{{ image.image }}" class=""
+                                        style="max-height: 350px; margin-bottom: 20px" />
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+		</div>
+		<div class='columns small-9' style="">
+			<h2 class='' style='color: #8f3d15'></h2>
+			<div style='border-radius: 4px; background-color: #94715B;' style="font-size: 13px"
+                class="t-c-darkbrown">
+                <div class="columns small-3" style="text-align: center; font-size: 13px; height: 30px">
+                    სართ.
+                </div>
+                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
+                    მცირე
+                </div>
+                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
+                    საშუალო
+                </div>
+                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
+                    დიდი
+                </div>
+                <div class="columns small-3" style="font-size: 13px">
+                    {% for floor in floors %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 20px; padding: 10px 2px 2px">
+                            {{ floor }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="columns small-7" style="font-size: 12px">
+                    {% for flat in flat_group1 %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
+                        {% if flat.get_status_display == 'თავისუფალია' %}
+                            color: #8C3313; border-color: #CC7353 !important;
+                        {% else %}
+                            color: #666;
+                        {% endif %}
+                        ">
+                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
+                            {{ flat.get_status_display }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="columns small-7" style="font-size: 12px">
+                    {% for flat in flat_group2 %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
+                        {% if flat.get_status_display == 'თავისუფალია' %}
+                            color: #8C3313; border-color: #CC7353 !important;
+                        {% else %}
+                            color: #666;
+                        {% endif %}
+                        ">
+                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
+                            {{ flat.get_status_display }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="columns small-7" style="font-size: 12px">
+                    {% for flat in flat_group3 %}
+                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
+                        {% if flat.get_status_display == 'თავისუფალია' %}
+                            color: #8C3313; border-color: #CC7353 !important;
+                        {% else %}
+                            color: #666;
+                        {% endif %}
+                        ">
+                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
+                            {{ flat.get_status_display }}
+                        </div>
+                    {% endfor %}
+                </div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

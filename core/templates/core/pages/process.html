@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block mainSection %}
+<div class='full-width bg-c-white' style='padding-top: 20px; padding-bottom: 40px'>
+    <div class="row">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>პროცესი</h2>
+    </div>
+	<div class='row' style='padding-top: 30px'>
+		<div class='columns small-24'>
+            <div class='columns small-8'>
+				<img id="bigimage" src="">
+			</div>
+			<div class='columns small-16'>
+				<div id="gallery">
+				{% for image in images %}
+				    <a href="/media/{{ image.image }}" title="Orange"><img src="/media/{{ image.image }}" alt="Orange"></a>
+				{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

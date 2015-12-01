@@ -4,8 +4,7 @@
 <div class='full-width bg-c-white' style="">
 	<div class='row' style='padding-top: 20px; height: 300px'>
 		<h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ჩვენს შესახებ</h2>
-		<div class='columns small-18'>
-			<h2 class='' style='color: #8f3d15'>ჩვენი ხედვა</h2>
+		<div class='columns small-24'>
 			<ul>
 				<li>ჩვენ ვაშენებთ ხარისხიანად</li>
 				<li>ჩვენი ფასი ყოველთვის საბაზროა</li>
@@ -24,14 +23,13 @@
 </div>
 <div class='full-width bg-c-pastelcream'>
 	<div class='row' style='padding-top: 30px'>
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ძველი პროექტი</h2>
 		<div class='columns small-24' >
 			<div class='columns small-8'>
 				<img id="bigimage" src="">
 			</div>
 			<div class='columns small-16'>
 				<div id="gallery">
-				
-				
 				{% for image in images %}
 				    <a href="/media/{{ image.image }}" title="Orange"><img src="/media/{{ image.image }}" alt="Orange"></a>	
 				{% endfor %}
