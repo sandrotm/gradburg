@@ -130,21 +130,31 @@
 
 
 <script>
+    var images = new Array()
+    function preload(urls) {
+        for (i = 0; i < urls.length; i++) {
+            images[i] = new Image();
+            images[i].src = urls[i];
+        }
+    }
+
+
     var bg1 = $('#bannerhead1 #bg-wrapper .bg1'),
         bg2 = $('#bannerhead1 #bg-wrapper .bg2');
 
     var backgrounds = new Array(
             //'url(../../media/images/banners/1.jpg)',
-            'url(../../media/images/banners/2.jpg)',
-            'url(../../media/images/banners/3.jpg)',
-            'url(../../media/images/banners/4.jpg)',
-            'url(../../media/images/banners/5.jpg)'
+            '../../media/images/banners/2.jpg',
+            '../../media/images/banners/3.jpg',
+            '../../media/images/banners/4.jpg',
+            '../../media/images/banners/5.jpg'
     );
+    preload(backgrounds);
 
     var bgChangeInterval;
     var current = 0, next = 0;
-    bg1.css('background-image', backgrounds[1]);
-    bg2.css('background-image', backgrounds[0]);
+    bg1.css('background-image', 'url(' + backgrounds[1] + ')');
+    bg2.css('background-image', 'url(' + backgrounds[0] + ')');
     var bgs = [bg1, bg2];
     var topBg = bg2;
 
@@ -159,7 +169,7 @@
 
         bgs[0].fadeTo(1500, 1, function () {
             //bg2.css('background-image', backgrounds[next]).css('z-index', 2);
-            bgs[1].css('background-image', backgrounds[(next + 1) % backgrounds.length]);
+            bgs[1].css('background-image', 'url(' + backgrounds[(next + 1) % backgrounds.length] + ')');
             var t = bgs[0];
             bgs[0] = bgs[1];
             bgs[1] = t;
@@ -169,11 +179,11 @@
     var bgChangeInterval;
     function startBgChanger() {
         bgChangeInterval = window.setInterval(nextBackground, 10000);
-        console.log(1);
+        //console.log(1);
     }
     function stopBgChanger() {
         window.clearInterval(bgChangeInterval);
-        console.log(2);
+        //console.log(2);
     }
 
 
