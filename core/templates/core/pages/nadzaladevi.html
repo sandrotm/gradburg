@@ -144,10 +144,18 @@
     var bgChangeInterval;
     function startBgChanger() {
         bgChangeInterval = window.setInterval(nextBackground, 10000);
+        console.log(1);
     }
     function stopBgChanger() {
         window.clearInterval(bgChangeInterval);
+        console.log(2);
     }
+
+
+    //document.addEventListener('visibilitychange', function(){
+    //    document.title = document.hidden; // change tab text for demo
+    //    console.log(document.hidden);
+    //});
 
     window.addEventListener('focus', startBgChanger);
     window.addEventListener('blur', stopBgChanger);
