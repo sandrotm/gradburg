@@ -76,10 +76,13 @@
 			<div id="map"></div>
 			<script src="https://maps.googleapis.com/maps/api/js"></script>
 			<script>
+              var position = {lat: 41.7406522, lng: 44.7876616},
+                  metroPos = {lat: 41.7429269, lng: 44.7839426},
+                  markerPos = {lat: 41.7382259, lng: 44.7919417},
+                  directionsDisplay = new google.maps.DirectionsRenderer(),
+                  directionsService = new google.maps.DirectionsService();
 			  function initialize() {
-				  var mapCanvas = document.getElementById('map'),
-				  	  position = {lat: 41.7406164, lng: 44.7884525},
-                      markerPos = {lat: 41.7384716, lng: 44.7920315};
+				  var mapCanvas = document.getElementById('map');
 
 				  var mapOptions = {
 				      center: new google.maps.LatLng(position.lat, position.lng),
@@ -93,8 +96,27 @@
 					  title: 'Gradburg'
 				  });
 
+                  directionsDisplay.setMap(map);
+                  calcRoute();
+
 			  }
 		      google.maps.event.addDomListener(window, 'load', initialize);
+
+
+                function calcRoute() {
+
+
+                  var request = {
+                    origin:metroPos,
+                    destination:markerPos,
+                    travelMode: google.maps.TravelMode.WALKING
+                  };
+                  directionsService.route(request, function(result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(result);
+                    }
+                  });
+                }
 
 			</script>
 
