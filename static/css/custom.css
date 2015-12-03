@@ -240,6 +240,10 @@ ul.homelist li:before {
 	position: absolute;
 	left: 0;
 	top: 0;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+
 } 
 
 #bannerhead1 .bg1 {
