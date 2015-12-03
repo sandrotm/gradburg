@@ -24,7 +24,7 @@
 	<script src="{% static 'lightbox/dist/simple-lightbox.min.js' %}"></script>
 </head>
 
-<body>
+<body style="min-width: 855px">
 	<div class='full-width  bg-c-green  '>
 		<div class='row'>
 			<div class='columns small-8' style='height: 90px'>
@@ -45,7 +45,7 @@
 					<a href="{% url 'core:process' %}" class="t-c-white0">პროცესი</a>
 				</div>
 				<div class='menuitem right'>
-					<a href="{% url 'core:flats' %}" class="t-c-white0">ბინები</a>
+					<a href="{% url 'core:flats' %}" class="t-c-white0">შეარჩიე ბინა</a>
 				</div>
 				<!--<div class='menuitem right'>
 					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">GRADBURG-ნაძალადევი</a>
@@ -90,15 +90,18 @@
 		})
 
 		$('#bigimage').attr('src', $('#gallery a').first()[0].href);
-		document.getElementById('gallery').onclick = function (event) {
-			event = event || window.event;
-			var target = event.target || event.srcElement,
-				link = target.src ? target.parentNode : target,
-				options = {index: link, event: event},
-				links = this.getElementsByTagName('a');
 
-			$('#bigimage').attr('src', link);
-			event.preventDefault();
+		document.getElementById('gallery').onclick = function (event) {
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+
+            if(link != '[object HTMLDivElement]')
+                $('#bigimage').attr('src', link);
+
+            event.preventDefault();
 		};
 	</script>
 	<style>

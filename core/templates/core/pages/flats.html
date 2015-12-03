@@ -2,108 +2,213 @@
 
 {% block mainSection %}
 
-<div class='full-width bg-c-white' style="padding-top: 20px; padding-bottom: 40px">
-    <!--<div class="row">
-        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
-    </div>-->
-	<div class='row'>
-		<h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
-		<div class='columns small-15'>
-            <ul class="tabs" data-tab>
-                <li class="tab-title active"><a href="#panel1">48მ2 ბინა</a></li>
-                <li class="tab-title"><a href="#panel2">73მ2 ბინა</a></li>
-                <li class="tab-title"><a href="#panel3">110.5მ2 ბინა</a></li>
+<!--<div class='full-width tbg' id='bannerhead1' style='background-color: #7F9822; height: 400px'>
+    <div style="font-size: 48px; top: 160px; font-weight: bold; font-family: mrgvalCaps;
+        position: relative; z-index: 100; color: white" class="row">
+        <div class="columns small-24" style="text-align: left;
+            text-shadow:rgba(255,255,255,.5) -1px -1px 1px, rgba(0,0,0,.5) 2px 2px 2px;">
+            <span style="font-size: 36px">შეარჩიეთ სასურველი ბინა</span><br />Gradburg-ნაძალადევში
+        </div>
+    </div>
+</div>-->
+
+<div class='full-width bg-c-white' style="padding-top: 20px; padding-bottom: 0px; overflow: hidden">
+    <div class="row">
+        <h2 class='columns small-24'
+            style='color: #8f3d15; margin-bottom: 30px; font-weight: bold'>შეარჩიე ბინა Gradburg-ნაძალადევში</h2>
+    </div>
+	<div class='row' style="margin-bottom: 0px" data-equalizer>
+		<div class='columns small-15 left' style="padding-right: 60px; padding-bottom: 40px" data-equalizer-watch>
+            <ul class="tabs row" data-tab
+                style="overflow: visible !important">
+                <li class="tab-title active columns small-8" id="plink1" style=""><a href="#panel1">48 მ2</a></li>
+                <li class="tab-title columns small-8" id="plink2" style=""><a href="#panel2">73 მ2</a></li>
+                <li class="tab-title columns small-8" id="plink3" style=""><a href="#panel3">110.5 მ2</a></li>
             </ul>
-            <div class="tabs-content row">
-                {% for flat_type in flat_types %}
+            <div class="row" style="border-bottom: 1px solid #999; margin-bottom: 20px !important; "></div>
+            <div class="tabs-content row" style=" overflow: hidden">
+                {% for flat_type, highlight_image in flat_types_zip %}
                     <div class="content {% if forloop.first %}active{% endif %}"
                          id="panel{{ forloop.counter }}">
-                        <div style="white-space: pre-wrap;"
-                            class="columns small-12">{{ flat_type.descr }}</div>
-                        <div class="columns small-12 imgholder">
+
+                        <div class="columns imgholder
+                            {% if forloop.last %} small-10{% else %} small-8{% endif %}"
+                            style="text-align: left">
+                            {% with outer_index=forloop.counter %}
                             {% for image in flat_type.images.all %}
                                 <a href="/media/{{ image.image }}">
                                     <img src="/media/{{ image.image }}" class=""
-                                        style="max-height: 350px; margin-bottom: 20px" />
+                                        style="position: relative;
+                                        {% if outer_index < 3 %} max-width: 200px;{% endif %}
+                                        {% if forloop.first %} margin-bottom:
+                                        30px; z-index: 999;{% else %}max-height: 160px{% endif %}" />
                                 </a>
                             {% endfor %}
+                            {% endwith %}
+                        </div>
+
+                        <div class="columns
+                            {% if forloop.last %} small-14{% else %} small-16{% endif %}">
+                            <div style="overflow: auto; height: 240px; margin-bottom: 40px">
+                            {% for meta in flat_type.meta.all %}
+                                <div class="row" style="border-bottom: 1px solid #DDD; font-size: 14px;
+                                    padding-bottom: 3px; margin-bottom: 3px; width: 100%">
+                                    <div class="columns
+                                    {% if forloop.counter < 4 %}small-8{% else %}small-24{% endif %}" style="font-weight: bold">
+                                        {{ meta.get_type_display }}
+                                    </div>
+                                    <div class="columns
+                                    {% if forloop.counter < 4 %}small-16{% else %}small-24{% endif %}"
+                                        style="white-space: pre-wrap; word-wrap: break-word;">{{ meta.value }}</div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                            <!--<div style="white-space: pre-wrap; margin-bottom: 30px;
+                                height: 266px; width: 100%;  overflow: auto;
+                                display: block; clear: both"></div>-->
+                            <img id="level-holder{{ ind }}"
+                                 style="max-width: 360px; float: right;"
+                                 src="/media/images/{{ highlight_image }}"  />
                         </div>
                     </div>
                 {% endfor %}
             </div>
 		</div>
-		<div class='columns small-9' style="">
-			<h2 class='' style='color: #8f3d15'></h2>
-			<div style='border-radius: 4px; background-color: #94715B;' style="font-size: 13px"
-                class="t-c-darkbrown">
-                <div class="columns small-3" style="text-align: center; font-size: 13px; height: 30px">
-                    სართ.
-                </div>
-                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
-                    მცირე
-                </div>
-                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
-                    საშუალო
-                </div>
-                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
-                    დიდი
-                </div>
-                <div class="columns small-3" style="font-size: 13px">
-                    {% for floor in floors %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 20px; padding: 10px 2px 2px">
-                            {{ floor }}
+		<div class='columns small-8 left' style="position: relative; " data-equalizer-watch>
+            <!--<h3 style="text-align: center; margin-bottom: 24px; color: #7f9822; font-weight: bold">
+                სართულის სქემა</h3>-->
+            <h3 style="text-align: center; color: #7f9822; font-weight: bold">
+                ბინების ხელმისაწვდომობა</h3>
+            <div style="background: linear-gradient(#666, #A97D5D) !important;
+                padding: 15px 15px 0; border-top-right-radius: 0px; border-top-left-radius: 2px;
+                position: absolute; bottom: 0; height: 490px">
+
+                <div style="font-size: 14px; " style="color: #FFFFFF" class="t-c-white">
+                    <div class="columns small-3"
+                         style="text-align: left; font-size: 14px; height: 30px; font-weight: bold">
+                        სართ
+                    </div>
+                    <div class="columns small-7" style="overflow: hidden; font-weight: bold; text-align: center; font-size: 14px; height: 30px">
+                        48 მ2
+                    </div>
+                    <div class="columns small-7" style="overflow: hidden; font-weight: bold; text-align: center; font-size: 14px; height: 30px">
+                        73 მ2
+                    </div>
+                    <div class="columns small-7" style="overflow: hidden; font-weight: bold; text-align: center; font-size: 14px; height: 30px">
+                        110.5 მ2
+                    </div>
+                    <div style="width: 0;
+                        height: 0; position: absolute; right: -30px; bottom: 460px;
+                        border-bottom: 30px solid #888880;
+                        border-right: 30px solid transparent;">
+                    </div>
+                    <div style="width: 30px; background-color: #888880;
+                        height: 460px; position: absolute; right: -30px; bottom: 0px;">
+                    </div>
+                    <div class="columns small-3" style="font-size: 14px">
+                        {% for floor in floors %}
+                            <div style="height: 40px; margin-bottom: 10px; text-align: center;
+                            line-height: 20px; padding: 6px 2px 2px; font-weight: bold;">
+                                {{ floor }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="columns small-7" style="font-size: 12px">
+                        {% for flat in flat_group1 %}
+                            <div style="height: 30px; margin-bottom: 20px; text-align: center;
+                            line-height: 18px; border: 0px solid #ccc; padding: 7px 2px 2px;
+                            border-radius: 0px;-moz-box-shadow: inset 3px 3px 2px #666;
+                            -webkit-box-shadow: inset 3px 3px 2px #666;
+                            box-shadow:         inset 3px 3px 2px #666; overflow: hidden;
+                            {% if flat.status == 'available' %}
+                                color: #8C3313; border-color: #CC7353 !important;
+                                background-color: #FFFF99;
+                            {% else %}
+                                color: #666;
+                                background-color: #EEEEBB;
+                            {% endif %}
+                            ">
+                                <!--<span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>-->
+                                {{ flat.get_status_display }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="columns small-7" style="font-size: 12px">
+                        {% for flat in flat_group2 %}
+                            <div style="height: 30px; margin-bottom: 20px; text-align: center;
+                            line-height: 18px; border: 0px solid #ccc; padding: 7px 2px 2px;
+                            border-radius: 0px;-moz-box-shadow: inset 3px 3px 2px #666;
+                            -webkit-box-shadow: inset 3px 3px 2px #666;
+                            box-shadow:         inset 3px 3px 2px #666; overflow: hidden;
+                            {% if flat.status == 'available' %}
+                                color: #8C3313; border-color: #CC7353 !important;
+                                background-color: #FFFF99;
+                            {% else %}
+                                color: #666;
+                                background-color: #EEEEBB;
+                            {% endif %}
+                            ">
+                                <!--<span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>-->
+                                {{ flat.get_status_display }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="columns small-7" style="font-size: 12px">
+                        {% for flat in flat_group3 %}
+                            <div style="height: 30px; margin-bottom: 20px; text-align: center;
+                            line-height: 18px; border: 0px solid #ccc; padding: 7px 2px 2px;
+                            border-radius: 0px;-moz-box-shadow: inset 3px 3px 2px #666;
+                            -webkit-box-shadow: inset 3px 3px 2px #666;
+                            box-shadow:         inset 3px 3px 2px #666; overflow: hidden;
+                            {% if flat.status == 'available' %}
+                                color: #8C3313; border-color: #CC7353 !important;
+                                background-color: #FFFF99;
+                            {% else %}
+                                color: #666;
+                                background-color: #EEEEBB;
+                            {% endif %}
+                            ">
+                                <!--<span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>-->
+                                {{ flat.get_status_display }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="columns small-21" style="font-size: 12px">
+                        <div style="height: 30px; margin-bottom: 20px; text-align: center;
+                            line-height: 18px; border: 0px solid #ccc; padding: 7px 2px 2px;
+                            border-radius: 0px;-moz-box-shadow: inset 3px 3px 2px #666;
+                            -webkit-box-shadow: inset 3px 3px 2px #666;
+                            box-shadow:         inset 3px 3px 2px #666;
+                            color: #666; background-color: #EEEEBB;">
+                                კომერციული ფართი
                         </div>
-                    {% endfor %}
+                    </div>
+
+
                 </div>
-                <div class="columns small-7" style="font-size: 12px">
-                    {% for flat in flat_group1 %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
-                        {% if flat.get_status_display == 'თავისუფალია' %}
-                            color: #8C3313; border-color: #CC7353 !important;
-                        {% else %}
-                            color: #666;
-                        {% endif %}
-                        ">
-                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
-                            {{ flat.get_status_display }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="columns small-7" style="font-size: 12px">
-                    {% for flat in flat_group2 %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
-                        {% if flat.get_status_display == 'თავისუფალია' %}
-                            color: #8C3313; border-color: #CC7353 !important;
-                        {% else %}
-                            color: #666;
-                        {% endif %}
-                        ">
-                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
-                            {{ flat.get_status_display }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="columns small-7" style="font-size: 12px">
-                    {% for flat in flat_group3 %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
-                        {% if flat.get_status_display == 'თავისუფალია' %}
-                            color: #8C3313; border-color: #CC7353 !important;
-                        {% else %}
-                            color: #666;
-                        {% endif %}
-                        ">
-                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
-                            {{ flat.get_status_display }}
-                        </div>
-                    {% endfor %}
-                </div>
-			</div>
-		</div>
-	</div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
 </div>
+
+<script>
+    /*$('#plink1').click(function(){
+        console.log($('#level-holder').attr('src'))
+        $('#level-holder').attr('src', '/media/images/unnamed_5.png')
+    })
+    $('#plink2').click(function(){
+        console.log($('#level-holder').attr('src'))
+        $('#level-holder').attr('src', '/media/images/unnamed_4.png')
+    })
+    $('#plink3').click(function(){
+        console.log($('#level-holder').attr('src'))
+        $('#level-holder').attr('src', '/media/images/unnamed_6.png')
+    })*/
+</script>
 
 {% endblock %}
