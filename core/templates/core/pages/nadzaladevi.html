@@ -2,8 +2,10 @@
 
 {% block mainSection %}
 <div class='full-width tbg' id='bannerhead1' style='height: 400px; background-color: #7F9822'>
-	<div class="bg1" style="background-size: cover"></div>
-	<div class="bg2" style="background-size: cover"></div>
+    <div id="bg-wrapper">
+        <div class="bg1" style="z-index: 1"></div>
+        <div class="bg2" style="z-index: 2"></div>
+    </div>
     <div style="font-size: 48px; font-weight: bold; font-family: mrgvalCaps;
         position: relative; top: 160px; z-index: 100; color: white" class="row">
         <div class="columns small-24" style="text-align: left;
@@ -104,6 +106,80 @@
 
 
 <script>
+//*
+    var bg1 = $('#bannerhead1 .bg1'),
+        bg2 = $('#bannerhead1 .bg2');
+
+    var backgrounds = new Array(
+            'url(../../media/images/banners/1.jpg)',
+            'url(../../media/images/banners/2.jpg)',
+            'url(../../media/images/banners/3.jpg)',
+            'url(../../media/images/banners/4.jpg)',
+            'url(../../media/images/banners/6.jpg)'
+    );
+    var bgChangeInterval;
+    var current = 0, next = 0;
+    bg1.css('background-image', backgrounds[1]);
+    bg2.css('background-image', backgrounds[0]);
+    var bgs = [bg1, bg2];
+    var topBg = bg2;
+    function nextBackground() {
+        current = next;
+        next++;
+        next = next % backgrounds.length;
+        bgs[0].css('opacity', '0.0').css('z-index', 2).css('transform', 'translate3d(0, 0, 0)');
+        y = 0;
+        topBg = bgs[0];
+        bgs[1].css('z-index', '1');
+
+        bgs[0].fadeTo(1500, 1, function () {
+            //bg2.css('background-image', backgrounds[next]).css('z-index', 2);
+            bgs[1].css('background-image', backgrounds[(next + 1) % backgrounds.length]);
+            var t = bgs[0];
+            bgs[0] = bgs[1];
+            bgs[1] = t;
+        });
+    }
+
+    var bgChangeInterval;
+    function startBgChanger() {
+        bgChangeInterval = window.setInterval(nextBackground, 10000);
+    }
+    function stopBgChanger() {
+        window.clearInterval(bgChangeInterval);
+    }
+
+    window.addEventListener('focus', startBgChanger);
+    window.addEventListener('blur', stopBgChanger);
+
+    $(document).ready(function() {
+        startBgChanger();
+    });
+
+
+    var y = 0, minY = -200, maxY = 0, speed = 0.02, prevTime = null, deltaTime = 0;
+
+    window.requestAnimationFrame(animate);
+
+    function animate (time) {
+        window.requestAnimationFrame(animate);
+
+        if (prevTime !== null) {
+            deltaTime = time - prevTime;
+        }
+        prevTime = time;
+
+        y -= deltaTime * speed;
+        if (y <= minY) {
+            y = minY;
+        }
+        topBg[0].style.transform = ['translate3d(0, ' + y +'px, 0)'];
+
+
+    };
+/*/
+/*
+
 $(document).ready(function() {
     var bg1 = $('#bannerhead1 .bg1'),
     	bg2 = $('#bannerhead1 .bg2');
@@ -163,7 +239,7 @@ $(document).ready(function() {
     }
 
 })
-
+//*/
 </script>
 
 
