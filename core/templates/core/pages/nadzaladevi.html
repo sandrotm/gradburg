@@ -1,120 +1,29 @@
 {% extends "core/base.html" %}
 
 {% block mainSection %}
-<div class='full-width bg-c-white' style="padding-top: 20px; padding-bottom: 40px">
-    <!--<div class="row">
-        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
-    </div>-->
-	<div class='row'>
-		<h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>ბინები</h2>
-		<div class='columns small-15'>
-            <ul class="tabs" data-tab>
-                <li class="tab-title active"><a href="#panel1">მცირე ბინა</a></li>
-                <li class="tab-title"><a href="#panel2">საშუალო ბინა</a></li>
-                <li class="tab-title"><a href="#panel3">დიდი ბინა</a></li>
-            </ul>
-            <div class="tabs-content row">
-                {% for flat_type in flat_types %}
-                    <div class="content {% if forloop.first %}active{% endif %}"
-                         id="panel{{ forloop.counter }}">
-                        <div style="white-space: pre-wrap;"
-                            class="columns small-12">{{ flat_type.descr }}</div>
-                        <div class="columns small-12">
-                            {% for image in flat_type.images.all %}
-                                <img src="/media/{{ image.image }}" class=""
-                                    style="max-height: 350px; margin-bottom: 20px" />
-                            {% endfor %}
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-		</div>
-		<div class='columns small-9' style="">
-			<h2 class='' style='color: #8f3d15'></h2>
-			<div style='border-radius: 4px; background-color: #94715B;' style="font-size: 13px"
-                class="t-c-darkbrown">
-                <div class="columns small-3" style="text-align: center; font-size: 13px; height: 30px">
-                    სართ.
-                </div>
-                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
-                    მცირე
-                </div>
-                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
-                    საშუალო
-                </div>
-                <div class="columns small-7" style="text-align: center; font-size: 13px; height: 30px">
-                    დიდი
-                </div>
-                <div class="columns small-3" style="font-size: 13px">
-                    {% for floor in floors %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 20px; padding: 10px 2px 2px">
-                            {{ floor }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="columns small-7" style="font-size: 12px">
-                    {% for flat in flat_group1 %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
-                        {% if flat.get_status_display == 'თავისუფალია' %}
-                            color: #8C3313; border-color: #CC7353 !important;
-                        {% else %}
-                            color: #666;
-                        {% endif %}
-                        ">
-                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
-                            {{ flat.get_status_display }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="columns small-7" style="font-size: 12px">
-                    {% for flat in flat_group2 %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
-                        {% if flat.get_status_display == 'თავისუფალია' %}
-                            color: #8C3313; border-color: #CC7353 !important;
-                        {% else %}
-                            color: #666;
-                        {% endif %}
-                        ">
-                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
-                            {{ flat.get_status_display }}
-                        </div>
-                    {% endfor %}
-                </div>
-                <div class="columns small-7" style="font-size: 12px">
-                    {% for flat in flat_group3 %}
-                        <div style="height: 40px; margin-bottom: 10px; text-align: center;
-                        line-height: 18px; border: 1px solid #ccc; padding: 0 2px 2px;
-                        {% if flat.get_status_display == 'თავისუფალია' %}
-                            color: #8C3313; border-color: #CC7353 !important;
-                        {% else %}
-                            color: #666;
-                        {% endif %}
-                        ">
-                            <span style="font-size: 9px">{{ flat.area }}კვმ | ${{ flat.price }}</span>
-                            {{ flat.get_status_display }}
-                        </div>
-                    {% endfor %}
-                </div>
-			</div>
-		</div>			
-	</div>
+<div class='full-width tbg' id='bannerhead1' style='height: 400px; background-color: #7F9822'>
+	<div class="bg1" style="background-size: cover"></div>
+	<div class="bg2" style="background-size: cover"></div>
+    <div style="font-size: 48px; font-weight: bold; font-family: mrgvalCaps;
+        position: relative; top: 160px; z-index: 100; color: white" class="row">
+        <div class="columns small-24" style="text-align: left;
+            text-shadow:rgba(255,255,255,.5) -1px -1px 1px, rgba(0,0,0,.5) 2px 2px 2px;">
+            <span style="font-size: 36px">მიმდინარე პროექტი:</span><br>Gradburg-ნაძალადევი
+        </div>
+    </div>
 </div>
 
-<div class='full-width bg-c-pastelcream' style='padding-top: 20px; padding-bottom: 40px'>
+
+<div class='full-width bg-c-white' style='padding-top: 20px; padding-bottom: 40px'>
     <div class="row" style="margin-bottom: 40px">
-        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>პროექტი</h2>
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px; font-weight: bold'>პროექტი</h2>
         <div class='columns small-16'>
-            რაღაც ტექსტი პროექტის შესახებ, რომელიც შედარებით ვრცელ ინფორმაციას მოიცავს<br />
-            გამოყენებული მასალები, აგური, ბეტონი, ფანჯარა, მეტალოპლასტიკი და ა.შ.<br />
-            მთავარი უპირატესობების შესახებ ვუყვებით ადამიანებს დეტალურად და სიამოვნებით<br />
-            დაწყების და დასრულების თარიღები, ამა და ამ წლის ამა და ამ თვის ამა და ამ რიცხვებს შორის<br />
-            და ბევრი<br />
-            სხვა<br />
-            საინტერესო<br />
-            ინფორმაცია!!!
+            პროექტ <b>Gradburg-ნაძალადევის</b> კონცეფცია არის გარემოს და ნაძალადევში მცხოვრები ადამიანების ხასიათს მისადაგებული მშენებლობა. ეს გამოიხატება მხოლოდ <b>9 სართულიან და ერთსადარბაზოიან</b> საცხოვრებელ კორპუსში, გარშემო უფრო მაღალსართულიანი მშენებლობების ფონზე.
+<br/><br/>ჩვენ გამოვიყენეთ <b>ბუნებრივი მასალები</b> ფასადის მოპირკეთებაში, რათა ხაზი გაგვესვა კორპუსის სიჯანსაღეზე.
+<br/><br/>კორპუსს გააჩნია 16 ადგილზე გათვლილი <b>მიწისქვეშა პარკინგი</b>, მათ შორის უნარშეზღუდულ პირთათვის განკუთვნილი ავტოსადგომო. რაც სრულად დააკმაყოფილებს მაცხოვრებელთა მოთხოვნებს.
+<br/><br/>პირველი სართული განკუთვნილია კომერციულ ფართებზე; 8 სართული - საცხოვრებელი ფართი, 3 ბინით თითოეულ სართულზე.
+<br/><br/>სტანდარტულად გათვალისწინებულია <b>3 ტიპიური ბინა</b>: 48.1 კვ/მ, 73.1 კვ/მ, 110.5 კვ/მ, თუმცა მყიდველის სურვისამებრ შესძლებელია ფართის ადაპტაცია.
+<br/><br/>კორპუსის ექსპლუატაციაში შესვლის ვადა არის <b>2017 წლის ოქტომბერი</b>.
 		</div>
         <div class='columns small-8'>
             <img src="/media/images/fasadi sqematuri.png" style="max-height: 350px;" />
@@ -133,24 +42,129 @@
     </div>
 </div>
 
-<div class='full-width bg-c-white' style='padding-top: 20px; padding-bottom: 40px'>
+
+
+<div class='full-width bg-c-pastelcream' style='padding-top: 20px; padding-bottom: 40px'>
     <div class="row">
-        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>პროცესი</h2>
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px; font-weight: bold'>მდებარეობა</h2>
     </div>
-	<div class='row' style='padding-top: 30px'>
-		<div class='columns small-24' style='height: 200px'>
+    <div class='row' style='padding-top: 0px'>
+		<div class='columns small-12 left'>
+            <div class="row">
+                <div class='columns small-4'>
+                    <!--<h2 class='' style='color: #8f3d15'>ჩვენი ხედვა</h2>-->
+                    <p><b>მისამართი:</b></p>
+                    <!--<p>ტელეფონი:</p>
+                    <p>e-mail:</p>-->
+                </div>
+
+                <div class='columns small-8' style="float:left">
+                    <p>ჭყონდიდელის ქუჩა, 22</p>
+                    <!--<p>032 2456 789</p>
+                    <p>contact@gradburg.ge</p>-->
+                </div>
+            </div>
+
+            Gradburg-ნაძალადევის აქ რაღაც ტექსტი რომელიც ზოგადად აღწერს მდებარეობას და მის დადებით მხარეებს
+        </div>
+
+
+
+		<div class='columns small-12 right'>
+			<div id="map"></div>
+			<script src="https://maps.googleapis.com/maps/api/js"></script>
+			<script>
+			  function initialize() {
+				  var mapCanvas = document.getElementById('map'),
+				  	  position = {lat: 41.7250488, lng: 44.74291799};
+				  var mapOptions = {
+				      center: new google.maps.LatLng(position.lat, position.lng),
+				      zoom: 16,
+				      mapTypeId: google.maps.MapTypeId.ROADMAP
+				  }
+				  var map = new google.maps.Map(mapCanvas, mapOptions);
+			      var marker = new google.maps.Marker({
+					  position: position,
+					  map: map,
+					  title: 'Gradburg'
+				  });
+
+			  }
+		      google.maps.event.addDomListener(window, 'load', initialize);
+
+			</script>
+
+			<!--<h2 class='caption t-c-wood'>კონტაქტი</h2>t-c-wood t-c-darkbrown
+			bg-c-warmgraylight bg-c-warmgraylight -->
+			<div style='border-radius: 4px; background-color: #94715B;'>
+			</div>
 		</div>
 	</div>
 </div>
 
-<div class='full-width bg-c-pastelcream' style='padding-top: 20px; padding-bottom: 40px'>
-    <div class="row">
-        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px'>მდებარეობა</h2>
-    </div>
-    <div class='row' style='padding-top: 30px'>
-		<div class='columns small-24' style='height: 200px'>
-		
-		</div>
-	</div>
-</div>
+
+<script>
+$(document).ready(function() {
+    var bg1 = $('#bannerhead1 .bg1'),
+    	bg2 = $('#bannerhead1 .bg2');
+
+    var backgrounds = new Array(
+        //'url(../../media/images/banners/1.jpg)',
+        'url(../../media/images/banners/2.jpg)',
+        'url(../../media/images/banners/3.jpg)',
+        'url(../../media/images/banners/4.jpg)',
+        'url(../../media/images/banners/5.jpg)'
+    )
+
+    var current = 0, next = 0;
+    var moveInterval;
+    function nextBackground() {
+        //window.clearInterval(moveInterval);
+        current = next;
+        next++;
+        next = next % backgrounds.length;
+        bg1.css('background-position', bg2.css('background-position'))
+
+        bg2.css('background-image', backgrounds[next]).css('opacity','0.0')
+        bg2.css('background-position', '0px 0px')
+        bg2.fadeTo(1500, 1, function(){
+            bg1.css('background-image', backgrounds[next])
+        })
+    }
+
+    moveInterval = setInterval(moveBackground, 50);
+
+    nextBackground()
+    var bgChangeInterval = setInterval(nextBackground, 10000)
+
+    // might become better if movement stops while changing pic
+
+    function moveBackground() {
+        var pos = bg2.css('background-position').split(' ')
+        var x, y, newval, y1
+
+
+        if(pos[0] === 'left') {
+            x = pos[1];
+            y = pos[3];
+            y1 = parseInt(y.replace('px', '')) - 1
+            newval = 'left ' + x + ' top ' + y1.toString() + 'px'
+        }else{
+            x = pos[0];
+            y = pos[1];
+            y1 = parseInt(y.replace('px', '')) - 1
+            //console.log(x, y, y1)
+            newval = x + ' ' + y1.toString() + 'px'
+        }
+        bg2.css('background-position', newval)
+
+
+
+    }
+
+})
+
+</script>
+
+
 {% endblock %}

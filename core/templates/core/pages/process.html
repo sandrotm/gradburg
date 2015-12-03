@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+
+{% block mainSection %}
+<div class='full-width bg-c-white' style='padding-top: 20px; padding-bottom: 40px'>
+    <div class="row">
+        <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px; font-weight: bold'>
+            Gradburg-ნაძალადევის მშენებლობა: ფოტოგალერეა</h2>
+    </div>
+	<div class='row' style='padding-top: 10px'>
+        <div class='columns small-12'>
+            <img id="bigimage" src="" style="border-radius: 4px">
+        </div>
+        <div class='columns small-12'>
+            <div id="gallery" class="row">
+            {% for image in images %}
+                <div class="columns small-8" style="height: 200px; overflow: hidden;
+                    margin-bottom: 20px; background-color: #FFFFFF; border-radius: 2px">
+                    <div style="background-color: #ddd; border-radius: 2px;
+                        text-align: center; height: 176px">
+                        <a href="/media/{{ image.image }}" title="Orange">
+                            <img src="/media/{{ image.image }}" alt="Orange"></a>
+                        <span style="font-size: 14px; font-style: normal; background-color: white;
+                            display: block; position: absolute; bottom: 0; width: 100%; font-weight: bold;
+                            opacity: 0.99; color: #444; line-height: 24px; left: 0px">
+                            {{ image.date_taken|date:'d b, Y' }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+	</div>
+</div>
+
+{% endblock %}

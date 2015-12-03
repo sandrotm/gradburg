@@ -15,38 +15,41 @@
 
 	<link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}"/>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
-	<!--<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick/slick.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/blueimp-gallery.min.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'slick/slick/slick-theme-my.css' %}"/>-->
+	<link rel="stylesheet" type="text/css" href="{% static 'lightbox/dist/simplelightbox.min.css' %}"/>
 	<!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-	<!--<script src="{% static 'js/modernizr.js' %}"></script>
-	bg-c-warmgraydark bg-c-darkbrown -->
+	<script src="{% static 'js/foundation.js' %}"></script>
+	<script src="{% static 'lightbox/dist/simple-lightbox.min.js' %}"></script>
 </head>
 
-<body>
+<body style="min-width: 855px">
 	<div class='full-width  bg-c-green  '>
 		<div class='row'>
 			<div class='columns small-8' style='height: 90px'>
 				<h1 class='eng-caption t-c-white'>
-					<a href="{% url 'core:home' %}" class="t-c-white0 b-w-0">
+					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">
                         <span style='font-size:70px'>G</span>RADBURG
                     </a>
 				</h1>
 			</div>
 			<div class='columns small-16' style='padding-top: 35px'>
-				<div class='menuitem right'>
+				<!--<div class='menuitem right'>
 					<a href="{% url 'core:aboutUs' %}" class="t-c-white0 b-w-0">ჩვენს შესახებ</a>
-				</div>
+				</div>-->
 				<div class='menuitem right'>
 					<a href="{% url 'core:contact' %}" class="t-c-white0">კონტაქტი</a>
 				</div>
 				<div class='menuitem right'>
-					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">GRADBURG-ნაძალადევი</a>
+					<a href="{% url 'core:process' %}" class="t-c-white0">პროცესი</a>
 				</div>
+				<div class='menuitem right'>
+					<a href="{% url 'core:flats' %}" class="t-c-white0">შეარჩიე ბინა</a>
+				</div>
+				<!--<div class='menuitem right'>
+					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">GRADBURG-ნაძალადევი</a>
+				</div>-->
 			</div>
 		</div>
 	</div>
@@ -66,5 +69,45 @@
 		</div>
 	</div>
 
+	<script>
+		$(document).foundation();
+	</script>
+
+	<script>
+		$(function() {
+			var lightbox1 = $('#panel1 div.imgholder a').simpleLightbox({
+				close: true,
+				overlay: true,
+			})
+			var lightbox2 = $('#panel2 div.imgholder a').simpleLightbox({
+				close: true,
+				overlay: true,
+			})
+			var lightbox3 = $('#panel3 div.imgholder a').simpleLightbox({
+				close: true,
+				overlay: true,
+			})
+		})
+
+		$('#bigimage').attr('src', $('#gallery a').first()[0].href);
+
+		document.getElementById('gallery').onclick = function (event) {
+            event = event || window.event;
+            var target = event.target || event.srcElement,
+                link = target.src ? target.parentNode : target,
+                options = {index: link, event: event},
+                links = this.getElementsByTagName('a');
+
+            if(link != '[object HTMLDivElement]')
+                $('#bigimage').attr('src', link);
+
+            event.preventDefault();
+		};
+	</script>
+	<style>
+		.sl-overlay{
+			background-color: #000;
+		}
+	</style>
 </body>
 {% comment %}{% include 'autocomplete_light/static.html' %}{% endcomment %}
