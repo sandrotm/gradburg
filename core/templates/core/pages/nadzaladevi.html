@@ -78,15 +78,17 @@
 			<script>
 			  function initialize() {
 				  var mapCanvas = document.getElementById('map'),
-				  	  position = {lat: 41.7250488, lng: 44.74291799};
+				  	  position = {lat: 41.7406164, lng: 44.7884525},
+                      markerPos = {lat: 41.7384716, lng: 44.7920315};
+
 				  var mapOptions = {
 				      center: new google.maps.LatLng(position.lat, position.lng),
-				      zoom: 16,
+				      zoom: 15,
 				      mapTypeId: google.maps.MapTypeId.ROADMAP
 				  }
 				  var map = new google.maps.Map(mapCanvas, mapOptions);
 			      var marker = new google.maps.Marker({
-					  position: position,
+					  position: markerPos,
 					  map: map,
 					  title: 'Gradburg'
 				  });
