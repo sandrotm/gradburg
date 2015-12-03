@@ -50,7 +50,7 @@
     <div class="row">
         <h2 class='columns small-24' style='color: #8f3d15; margin-bottom: 20px; font-weight: bold'>მდებარეობა</h2>
     </div>
-    <div class='row' style='padding-top: 0px'>
+    <div class='row' style='padding-top: 0px; line-height: 30px'>
 		<div class='columns small-12 left'>
             <div class="row">
                 <div class='columns small-4'>
@@ -67,7 +67,7 @@
                 </div>
             </div>
 
-            Gradburg-ნაძალადევის აქ რაღაც ტექსტი რომელიც ზოგადად აღწერს მდებარეობას და მის დადებით მხარეებს
+            Gradburg-ნაძალადევის კორპუსი მდებაორეობს ნაძალადევში, <br />მეტრო ელექტროდეპოდან ფეხით 5 წუთის სავალზე. <br />ასევე, ფეხით 5 წუთის სავალზე N1 სამშობიარო სახლიდან.
         </div>
 
 
@@ -130,23 +130,24 @@
 
 
 <script>
-//*
-    var bg1 = $('#bannerhead1 .bg1'),
-        bg2 = $('#bannerhead1 .bg2');
+    var bg1 = $('#bannerhead1 #bg-wrapper .bg1'),
+        bg2 = $('#bannerhead1 #bg-wrapper .bg2');
 
     var backgrounds = new Array(
-            'url(../../media/images/banners/1.jpg)',
+            //'url(../../media/images/banners/1.jpg)',
             'url(../../media/images/banners/2.jpg)',
             'url(../../media/images/banners/3.jpg)',
             'url(../../media/images/banners/4.jpg)',
-            'url(../../media/images/banners/6.jpg)'
+            'url(../../media/images/banners/5.jpg)'
     );
+
     var bgChangeInterval;
     var current = 0, next = 0;
     bg1.css('background-image', backgrounds[1]);
     bg2.css('background-image', backgrounds[0]);
     var bgs = [bg1, bg2];
     var topBg = bg2;
+
     function nextBackground() {
         current = next;
         next++;
@@ -193,7 +194,7 @@
 
     window.requestAnimationFrame(animate);
 
-    function animate (time) {
+    function animate(time){
         window.requestAnimationFrame(animate);
 
         if (prevTime !== null) {
@@ -206,12 +207,10 @@
             y = minY;
         }
         topBg[0].style.transform = ['translate3d(0, ' + y +'px, 0)'];
+    }
 
 
-    };
-/*/
-/*
-
+    /*
 $(document).ready(function() {
     var bg1 = $('#bannerhead1 .bg1'),
     	bg2 = $('#bannerhead1 .bg2');
@@ -270,8 +269,8 @@ $(document).ready(function() {
 
     }
 
-})
-//*/
+})*/
+
 </script>
 
 

@@ -121,6 +121,6 @@ STATIC_ROOT = env_var('ABS_PATH_BASE', '') + 'static_gather/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     #os.path.join(BASE_DIR, 'media'),
-    os.path.join(BASE_DIR, 'FndGradburg/css'),    
+    #os.path.join(BASE_DIR, 'FndGradburg/css'),
 )
 # S T A T I C   F I L E S   END
