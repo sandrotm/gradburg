@@ -17,7 +17,7 @@
         <h2 class='columns small-24'
             style='color: #8f3d15; margin-bottom: 30px; font-weight: bold'>შეარჩიე ბინა Gradburg-ნაძალადევში</h2>
     </div>
-	<div class='row' style="margin-bottom: 0px" data-equalizer>
+	<div class='row' style="margin-bottom: 0px; min-height: 543px; position: relative" data-equalizer>
 		<div class='columns small-15 left' style="padding-right: 60px; padding-bottom: 40px" data-equalizer-watch>
             <ul class="tabs row" data-tab
                 style="overflow: visible !important">
@@ -74,10 +74,10 @@
                 {% endfor %}
             </div>
 		</div>
-		<div class='columns small-8 left' style="position: relative; " data-equalizer-watch>
+		<div class='columns small-8 left' style="position: absolute; bottom: 0; right: 0;" >
             <!--<h3 style="text-align: center; margin-bottom: 24px; color: #7f9822; font-weight: bold">
                 სართულის სქემა</h3>-->
-            <h3 style="text-align: center; color: #7f9822; font-weight: bold">
+            <h3 style="text-align: center; color: #7f9822; font-weight: bold; position: absolute; bottom: 500px">
                 ბინების ხელმისაწვდომობა</h3>
             <div style="background: linear-gradient(#666, #A97D5D) !important;
                 padding: 15px 15px 0; border-top-right-radius: 0px; border-top-left-radius: 2px;
@@ -195,20 +195,5 @@
 
     </div>
 </div>
-
-<script>
-    /*$('#plink1').click(function(){
-        console.log($('#level-holder').attr('src'))
-        $('#level-holder').attr('src', '/media/images/unnamed_5.png')
-    })
-    $('#plink2').click(function(){
-        console.log($('#level-holder').attr('src'))
-        $('#level-holder').attr('src', '/media/images/unnamed_4.png')
-    })
-    $('#plink3').click(function(){
-        console.log($('#level-holder').attr('src'))
-        $('#level-holder').attr('src', '/media/images/unnamed_6.png')
-    })*/
-</script>
 
 {% endblock %}
