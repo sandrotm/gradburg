@@ -112,7 +112,8 @@ lightteal #9C9F84
 
 @font-face {
     font-family: engCaps;
-    src: url(../fonts/Bauhaus_.ttf);
+		src: url('../fonts/Bauhaus_.eot');
+		src: local('☺'), url('../fonts/Bauhaus_.woff') format('woff'), url('../fonts/Bauhaus_.ttf') format('truetype'), url('../fonts/Bauhaus_.svg') format('svg');
     letter-spacing: 1px;
 }
 
@@ -121,7 +122,7 @@ lightteal #9C9F84
 }
 
 .eng-caption{
-	font-family: Bauhaus;
+	font-family: engCaps;
 }
 
 .t-c-white{
