@@ -130,14 +130,6 @@
 
 
 <script>
-    var images = new Array()
-    function preload(urls) {
-        for (i = 0; i < urls.length; i++) {
-            images[i] = new Image();
-            images[i].src = urls[i];
-        }
-    }
-
 
     var bg1 = $('#bannerhead1 #bg-wrapper .bg1'),
         bg2 = $('#bannerhead1 #bg-wrapper .bg2');
@@ -157,6 +149,10 @@
     bg2.css('background-image', 'url(' + backgrounds[0] + ')');
     var bgs = [bg1, bg2];
     var topBg = bg2;
+    var lastChangeTime = 0;
+    var duration = 10000;
+    var elapsed = 0;
+    var y = 0, minY = -200, maxY = 0, speed = 0.02, prevTime = Date.now(), deltaTime = 0;
 
     function nextBackground() {
         current = next;
@@ -168,29 +164,26 @@
         bgs[1].css('z-index', '1');
 
         bgs[0].fadeTo(1500, 1, function () {
-            //bg2.css('background-image', backgrounds[next]).css('z-index', 2);
             bgs[1].css('background-image', 'url(' + backgrounds[(next + 1) % backgrounds.length] + ')');
             var t = bgs[0];
             bgs[0] = bgs[1];
             bgs[1] = t;
         });
+        lastChangeTime = Date.now();
+	bgChangeInterval = window.setTimeout(nextBackground, duration);
     }
 
     var bgChangeInterval;
-    function startBgChanger() {
-        bgChangeInterval = window.setInterval(nextBackground, 10000);
-        //console.log(1);
+    function startBgChanger () {
+        lastChangeTime = Date.now();
+        bgChangeInterval = window.setTimeout(nextBackground, duration - elapsed);
+	elapsed = 0;
+	prevTime = lastChangeTime;
     }
-    function stopBgChanger() {
-        window.clearInterval(bgChangeInterval);
-        //console.log(2);
+    function stopBgChanger () {
+        window.clearTimeout(bgChangeInterval);
+        elapsed = (Date.now() - lastChangeTime);
     }
-
-
-    //document.addEventListener('visibilitychange', function(){
-    //    document.title = document.hidden; // change tab text for demo
-    //    console.log(document.hidden);
-    //});
 
     window.addEventListener('focus', startBgChanger);
     window.addEventListener('blur', stopBgChanger);
@@ -200,16 +193,15 @@
     });
 
 
-    var y = 0, minY = -200, maxY = 0, speed = 0.02, prevTime = null, deltaTime = 0;
 
     window.requestAnimationFrame(animate);
-
-    function animate(time){
+    
+    function animate () {
         window.requestAnimationFrame(animate);
 
-        if (prevTime !== null) {
-            deltaTime = time - prevTime;
-        }
+        time = Date.now();
+        deltaTime = time - prevTime;
+        
         prevTime = time;
 
         y -= deltaTime * speed;
@@ -218,68 +210,6 @@
         }
         topBg[0].style.transform = ['translate3d(0, ' + y +'px, 0)'];
     }
-
-
-    /*
-$(document).ready(function() {
-    var bg1 = $('#bannerhead1 .bg1'),
-    	bg2 = $('#bannerhead1 .bg2');
-
-    var backgrounds = new Array(
-        //'url(../../media/images/banners/1.jpg)',
-        'url(../../media/images/banners/2.jpg)',
-        'url(../../media/images/banners/3.jpg)',
-        'url(../../media/images/banners/4.jpg)',
-        'url(../../media/images/banners/5.jpg)'
-    )
-
-    var current = 0, next = 0;
-    var moveInterval;
-    function nextBackground() {
-        //window.clearInterval(moveInterval);
-        current = next;
-        next++;
-        next = next % backgrounds.length;
-        bg1.css('background-position', bg2.css('background-position'))
-
-        bg2.css('background-image', backgrounds[next]).css('opacity','0.0')
-        bg2.css('background-position', '0px 0px')
-        bg2.fadeTo(1500, 1, function(){
-            bg1.css('background-image', backgrounds[next])
-        })
-    }
-
-    moveInterval = setInterval(moveBackground, 50);
-
-    nextBackground()
-    var bgChangeInterval = setInterval(nextBackground, 10000)
-
-    // might become better if movement stops while changing pic
-
-    function moveBackground() {
-        var pos = bg2.css('background-position').split(' ')
-        var x, y, newval, y1
-
-
-        if(pos[0] === 'left') {
-            x = pos[1];
-            y = pos[3];
-            y1 = parseInt(y.replace('px', '')) - 1
-            newval = 'left ' + x + ' top ' + y1.toString() + 'px'
-        }else{
-            x = pos[0];
-            y = pos[1];
-            y1 = parseInt(y.replace('px', '')) - 1
-            //console.log(x, y, y1)
-            newval = x + ' ' + y1.toString() + 'px'
-        }
-        bg2.css('background-position', newval)
-
-
-
-    }
-
-})*/
 
 </script>
 

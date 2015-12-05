@@ -3,111 +3,124 @@
 
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	
-	<title>{% block title %}Gradburg{% endblock %}</title>
-	<meta name="description" content="NPC">
-	<meta name="author" content="NPC">
-	<!--this meta is needed to render adequately on mobiles, 
-		taking into account physical screen sizes, 
-		rather than just pixels-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
+    <meta charset="utf-8">
 
-	<link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
-	<link rel="stylesheet" type="text/css" href="{% static 'lightbox/dist/simplelightbox.min.css' %}"/>
-	<!--[if lt IE 9]>
+    <title>{% block title %}Gradburg{% endblock %}</title>
+    <meta name="description" content="NPC">
+    <meta name="author" content="NPC">
+    <!--this meta is needed to render adequately on mobiles,
+        taking into account physical screen sizes,
+        rather than just pixels-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'lightbox/dist/simplelightbox.min.css' %}"/>
+    <!--[if lt IE 9]>
 	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	<script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-	<script src="{% static 'js/foundation.js' %}"></script>
-	<script src="{% static 'lightbox/dist/simple-lightbox.min.js' %}"></script>
+    <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'js/foundation.js' %}"></script>
+    <script src="{% static 'lightbox/dist/simple-lightbox.min.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
 </head>
 
 <body style="min-width: 855px">
-	<div class='full-width  bg-c-green  '>
-		<div class='row'>
-			<div class='columns small-8' style='height: 90px'>
-				<h1 class='eng-caption t-c-white'>
-					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">
-                        <span style='font-size:70px'>G</span>RADBURG
-                    </a>
-				</h1>
-			</div>
-			<div class='columns small-16' style='padding-top: 35px'>
-				<!--<div class='menuitem right'>
+<div class='full-width  bg-c-green  '>
+    <div class='row'>
+        <div class='columns small-8' style='height: 90px'>
+            <h1 class='eng-caption t-c-white'>
+                <a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">
+                    <span style='font-size:70px'>G</span>RADBURG
+                </a>
+            </h1>
+        </div>
+        <div class='columns small-16' style='padding-top: 35px'>
+            <!--<div class='menuitem right'>
 					<a href="{% url 'core:aboutUs' %}" class="t-c-white0 b-w-0">ჩვენს შესახებ</a>
 				</div>-->
-				<div class='menuitem right'>
-					<a href="{% url 'core:contact' %}" class="t-c-white0">კონტაქტი</a>
-				</div>
-				<div class='menuitem right'>
-					<a href="{% url 'core:process' %}" class="t-c-white0">პროცესი</a>
-				</div>
-				<div class='menuitem right'>
-					<a href="{% url 'core:flats' %}" class="t-c-white0">შეარჩიე ბინა</a>
-				</div>
-				<!--<div class='menuitem right'>
+            <div class='menuitem right'>
+                <a href="{% url 'core:contact' %}" class="t-c-white0">კონტაქტი</a>
+            </div>
+            <div class='menuitem right'>
+                <a href="{% url 'core:process' %}" class="t-c-white0">პროცესი</a>
+            </div>
+            <div class='menuitem right'>
+                <a href="{% url 'core:flats' %}" class="t-c-white0">შეარჩიე ბინა</a>
+            </div>
+            <!--<div class='menuitem right'>
 					<a href="{% url 'core:nadzaladevi' %}" class="t-c-white0 b-w-0">GRADBURG-ნაძალადევი</a>
 				</div>-->
-			</div>
-		</div>
-	</div>
-	<script>
-		var url = window.location.href;
-		$('.menuitem').filter(function() {
-    		return $(this).find('a')[0].href == url;
-		}).addClass('menuitem-active');
-	</script>
-	{% block mainSection %}
-	{% endblock %}
-	<div class='full-width bg-c-pastelbrown'>
-		<div class='row' style='padding-top: 20px'>
-			<div class='columns small-12 t-c-white' style='height: 40px'>
-				&copy; Gradburg LTD, თბილისი, 2015 
-			</div>
-		</div>
-	</div>
+        </div>
+    </div>
+</div>
+<script>
+    var url = window.location.href;
+    $('.menuitem').filter(function () {
+        return $(this).find('a')[0].href == url;
+    }).addClass('menuitem-active');
+</script>
+{% block mainSection %}
+{% endblock %}
+<div class='full-width bg-c-pastelbrown'>
+    <div class='row' style='padding-top: 20px'>
+        <div class='columns small-12 t-c-white' style='height: 40px'>
+            &copy; Gradburg LTD, თბილისი, 2015
+        </div>
+    </div>
+</div>
 
-	<script>
-		$(document).foundation();
-	</script>
+<script>
+    $(document).foundation();
+</script>
 
-	<script>
-		$(function() {
-			var lightbox1 = $('#panel1 div.imgholder a').simpleLightbox({
-				close: true,
-				overlay: true,
-			})
-			var lightbox2 = $('#panel2 div.imgholder a').simpleLightbox({
-				close: true,
-				overlay: true,
-			})
-			var lightbox3 = $('#panel3 div.imgholder a').simpleLightbox({
-				close: true,
-				overlay: true,
-			})
-		})
+<script>
 
-		$('#bigimage').attr('src', $('#gallery a').first()[0].href);
+    $(function () {
+        var lightbox1 = $('#panel1 div.imgholder a').simpleLightbox({
+            close: true,
+            overlay: true,
+        })
+        var lightbox2 = $('#panel2 div.imgholder a').simpleLightbox({
+            close: true,
+            overlay: true,
+        })
+        var lightbox3 = $('#panel3 div.imgholder a').simpleLightbox({
+            close: true,
+            overlay: true,
+        })
+    })
 
-		document.getElementById('gallery').onclick = function (event) {
-            event = event || window.event;
-            var target = event.target || event.srcElement,
+
+    var galleryImages =
+            $('.imgholder img')
+                    .map(function (elem) {
+                        return this.src;
+                    })
+                    .get();
+
+    preload(galleryImages);
+    $('#bigimage').attr('src', $('#gallery a').first()[0].href);
+
+
+    $('#bigimage').attr('src', $('#gallery a').first()[0].href);
+    document.getElementById('gallery').onclick = function (event) {
+        event = event || window.event;
+        var target = event.target || event.srcElement,
                 link = target.src ? target.parentNode : target,
                 options = {index: link, event: event},
                 links = this.getElementsByTagName('a');
 
-            if(link != '[object HTMLDivElement]')
-                $('#bigimage').attr('src', link);
+        if (link != '[object HTMLDivElement]')
+            $('#bigimage').attr('src', link);
 
-            event.preventDefault();
-		};
-	</script>
-	<style>
-		.sl-overlay{
-			background-color: #000;
-		}
-	</style>
+        event.preventDefault();
+    };
+</script>
+<style>
+    .sl-overlay {
+        background-color: #000;
+    }
+</style>
 </body>
 {% comment %}{% include 'autocomplete_light/static.html' %}{% endcomment %}
